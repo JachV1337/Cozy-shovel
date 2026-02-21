@@ -1,18 +1,18 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TakeSnow : MonoBehaviour
 {
-    [SerializeField] private float checkRadius = 1f;
+    [SerializeField] private float checkRadius = 1f; // maksymalny zasięg od gracza
     private Vector2? clickPos; // przechowuje pozycję kliknięcia
 
     void OnDrawGizmosSelected()
     {
+        // Zasięg gracza
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, checkRadius);
 
-        // jeśli kliknięto, pokaż miejsce kliknięcia
+        // Punkt kliknięcia
         if (clickPos.HasValue)
         {
             Gizmos.color = Color.yellow;
@@ -20,36 +20,34 @@ public class TakeSnow : MonoBehaviour
         }
     }
 
-    // Update jest idealnym miejscem do wykonania akcji
     void Update()
     {
         if (clickPos.HasValue)
         {
             Vector2 worldPos2D = clickPos.Value;
 
-            // Sprawdzenie śniegu wokół obiektu
-            Collider2D hit = Physics2D.OverlapCircle(transform.position, checkRadius);
-            if (hit != null && hit.CompareTag("Snow"))
+            // Obliczamy odległość od gracza
+            float distance = Vector2.Distance(transform.position, worldPos2D);
+            if (distance <= checkRadius)
             {
-                Debug.Log("Śnieg w zasięgu!");
+                // Sprawdzenie czy kliknięto obiekt ze śniegiem
                 Collider2D hitClick = Physics2D.OverlapPoint(worldPos2D);
-                if (hitClick != null)
+                if (hitClick != null && hitClick.CompareTag("Snow"))
                 {
-                    Debug.Log("Kliknięto: " + hitClick.name);
+                    Debug.Log("Śnieg w zasięgu kliknięcia: " + hitClick.name);
                     Snow snow = hitClick.GetComponent<Snow>();
                     if (snow != null)
                     {
                         snow.DestroySnow();
                     }
                 }
-
-                clickPos = null; // resetujemy po obsłużeniu
             }
             else
             {
-                //Debug.Log("Nie ma śniegu w zasięgu.");
+                Debug.Log("Kliknięcie za daleko!");
             }
 
+            clickPos = null; // resetujemy po obsłużeniu
         }
     }
 
