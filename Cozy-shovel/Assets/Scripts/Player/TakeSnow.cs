@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class TakeSnow : MonoBehaviour
 {
-    [SerializeField] private float checkRadius = 1f; // maksymalny zasięg od gracza
+    [SerializeField] private float checkRadius = 2f; // maksymalny zasięg od gracza
     private Vector2? clickPos; // przechowuje pozycję kliknięcia
 
     void OnDrawGizmosSelected()
@@ -39,6 +39,10 @@ public class TakeSnow : MonoBehaviour
                     if (snow != null)
                     {
                         snow.DestroySnow();
+                    }
+                    else
+                    {
+                        clickPos = null;
                     }
                 }
             }
