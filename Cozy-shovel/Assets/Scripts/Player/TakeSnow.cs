@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class TakeSnow : MonoBehaviour
 {
-    [SerializeField] private float checkRadius = 2f; // maksymalny zasięg od gracza
+    [SerializeField] private float checkRadius = 1.5f; // maksymalny zasięg od gracza
     private Vector2? clickPos; // przechowuje pozycję kliknięcia
     public Coroutine timeToDestroySnowCoroutine;
     public bool isTakingSnow;
