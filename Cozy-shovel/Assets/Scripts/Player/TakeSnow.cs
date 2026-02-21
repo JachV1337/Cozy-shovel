@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,7 +6,8 @@ public class TakeSnow : MonoBehaviour
 {
     [SerializeField] private float checkRadius = 2f; // maksymalny zasięg od gracza
     private Vector2? clickPos; // przechowuje pozycję kliknięcia
-
+    public Coroutine timeToDestroySnowCoroutine;
+    public bool isTakingSnow;
     void OnDrawGizmosSelected()
     {
         // Zasięg gracza
@@ -38,7 +40,12 @@ public class TakeSnow : MonoBehaviour
                     Snow snow = hitClick.GetComponent<Snow>();
                     if (snow != null)
                     {
-                        snow.DestroySnow();
+                        ProgresBar progres = hitClick.GetComponent<ProgresBar>();
+                        if (progres != null)
+                        {
+                            progres.StartToTakeSnow();
+                        }
+                        StartToDestroySnow(snow);
                     }
                     else
                     {
@@ -64,5 +71,21 @@ public class TakeSnow : MonoBehaviour
             worldPos.z = 0f;
             clickPos = worldPos;
         }
+    }
+    public void StartToDestroySnow(Snow snow)
+    {
+        timeToDestroySnowCoroutine = StartCoroutine(TimeToDestroySnow(snow));
+        isTakingSnow = true;
+    }
+    IEnumerator TimeToDestroySnow(Snow snow)
+    {
+        yield return new WaitForSeconds(2.5f);
+        snow.DestroySnow();
+        isTakingSnow = false;
+    }
+    public void CancelTakingSnow()
+    {
+        StopCoroutine(timeToDestroySnowCoroutine);
+        isTakingSnow = false;
     }
 }

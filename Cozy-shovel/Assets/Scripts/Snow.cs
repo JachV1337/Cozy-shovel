@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class Snow : MonoBehaviour
 {
     [SerializeField] SnowManager snowManager;
     public int snowToGive = 1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,6 +17,7 @@ public class Snow : MonoBehaviour
     {
         
     }
+   
     public void DestroySnow()
     {
         snowManager.UpdateNumberOfSnow(snowToGive);

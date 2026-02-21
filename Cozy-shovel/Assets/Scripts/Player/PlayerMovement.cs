@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Slider staminaSlider;
+    [SerializeField] TakeSnow takeSnow;
 
     private float currentMovementSpeed;
     private float walkSpeed = 5f;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        takeSnow = GetComponent<TakeSnow>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentMovementSpeed = walkSpeed;
@@ -38,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
         bool isMoving = moveInput.sqrMagnitude > 0.01f;
         bool isSprinting = canSprint && !sprintBlocked && currentStamina > 0 && isMoving;
 
+        if ((isMoving || isSprinting) && takeSnow.isTakingSnow)
+        {
+            takeSnow.CancelTakingSnow();
+        }
         // ================= STAMINA =================
 
         if (isSprinting)
