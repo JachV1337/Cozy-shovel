@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class NPCBuySnow : MonoBehaviour, INPCInteractable
+public class NPCBuySnow : MonoBehaviour
 {
     [SerializeField] GameObject SnowSellMenu;
-    bool isOpen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        SnowSellMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -15,15 +14,15 @@ public class NPCBuySnow : MonoBehaviour, INPCInteractable
     {
         
     }
-    public void InteractWithNPC()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isOpen)
-        {
-            SnowSellMenu.SetActive(false);
-        }
-        else if (!isOpen)
+        if (other.gameObject.CompareTag("Player"))
         {
             SnowSellMenu.SetActive(true);
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        SnowSellMenu.SetActive(false);
     }
 }

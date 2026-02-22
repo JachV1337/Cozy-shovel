@@ -1,0 +1,33 @@
+using System;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class MoneyManager : MonoBehaviour
+{
+    [SerializeField] TextMeshProUGUI moneyText;
+    private float currentMoney = 0;
+    private float multiplier = 1.5f;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        UpdateText();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    public void ChangeMoney(float amount)
+    {
+        amount *= multiplier;
+        amount = (float)Math.Round(amount,2);
+        currentMoney += amount;
+        UpdateText();
+    }
+    void UpdateText()
+    {
+        moneyText.text = currentMoney.ToString();
+    }
+}
