@@ -41,11 +41,11 @@ public class TakeSnow : MonoBehaviour
                     if (snow != null)
                     {
                         ProgresBar progres = hitClick.GetComponent<ProgresBar>();
-                        if (progres != null)
+                        if (progres != null && !isTakingSnow)
                         {
                             progres.StartToTakeSnow();
+                            StartToDestroySnow(snow);
                         }
-                        StartToDestroySnow(snow);
                     }
                     else
                     {

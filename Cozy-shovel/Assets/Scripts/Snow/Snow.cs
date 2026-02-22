@@ -21,6 +21,9 @@ public class Snow : MonoBehaviour
     public void DestroySnow()
     {
         snowManager.UpdateNumberOfSnow(snowToGive);
-        Destroy(gameObject);
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
     }
 }
