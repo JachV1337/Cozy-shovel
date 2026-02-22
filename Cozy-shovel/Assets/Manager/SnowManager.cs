@@ -19,7 +19,7 @@ public class SnowManager : MonoBehaviour
     }
     public void UpdateNumberOfSnow(int snow)
     {
-        if (currentNumberOfSnow < maxNumberOfSnow)
+        if (currentNumberOfSnow < maxNumberOfSnow || snow < 0)
         {
             currentNumberOfSnow += snow;
         }
