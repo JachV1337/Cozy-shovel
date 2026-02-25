@@ -6112,7 +6112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0484b0445d4b6d40934d08aacef8a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
-  mouseIcon: {fileID: 2800000, guid: 5d8b75655766f33439a6962170276ae4, type: 3}
+  mouseIcon: {fileID: 2800000, guid: a26f97a5c4032a04cb120d1a9a9aa817, type: 3}
 --- !u!4 &738506940
 Transform:
   m_ObjectHideFlags: 0
@@ -15155,7 +15155,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1596668770}
   m_FillRect: {fileID: 540994399}
   m_HandleRect: {fileID: 1596668769}
@@ -15449,10 +15449,13 @@ MonoBehaviour:
   - {fileID: 8867583675961952252, guid: 54d7e4995155fe447808fb3cf2c1c1c9, type: 3}
   - {fileID: 4411894434169943614, guid: 1ac71f899e6d59e4292d4c993130f0c9, type: 3}
   - {fileID: 2967045605850195896, guid: 7ba86d257fb11ba4e81fd14e74787ce4, type: 3}
+  - {fileID: 8867583675961952252, guid: 3cca1aec9fde00e40b25edf031ae7572, type: 3}
+  - {fileID: 8867583675961952252, guid: 47832b8bd094e514c8bdcb95b4a65e3c, type: 3}
+  - {fileID: 4411894434169943614, guid: e1c6941bee0678e4d80f29ada16450b0, type: 3}
+  - {fileID: 4411894434169943614, guid: 65a4512428c9d0c438e114e705eff358, type: 3}
+  - {fileID: 4411894434169943614, guid: 6a5e8756d500de6459c9f5371647e5cf, type: 3}
+  - {fileID: 8867583675961952252, guid: 37c15500c79a658408672bc3270bdb66, type: 3}
   spawnChance: 1
-  randomRotation: 0
-  randomFlipX: 1
-  randomFlipY: 1
 --- !u!4 &1651197461
 Transform:
   m_ObjectHideFlags: 0

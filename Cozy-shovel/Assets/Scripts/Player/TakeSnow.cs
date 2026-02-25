@@ -6,8 +6,13 @@ public class TakeSnow : MonoBehaviour
 {
     [SerializeField] private float checkRadius = 1.5f; // maksymalny zasięg od gracza
     private Vector2? clickPos; // przechowuje pozycję kliknięcia
+    private SnowManager snowManager;
     public Coroutine timeToDestroySnowCoroutine;
     public bool isTakingSnow;
+    private void Start()
+    {
+        snowManager = GameObject.Find("SnowManager").GetComponent<SnowManager>();
+    }
     void OnDrawGizmosSelected()
     {
         // Zasięg gracza
@@ -41,7 +46,7 @@ public class TakeSnow : MonoBehaviour
                     if (snow != null)
                     {
                         ProgresBar progres = hitClick.GetComponent<ProgresBar>();
-                        if (progres != null && !isTakingSnow)
+                        if (progres != null && !isTakingSnow && timeToDestroySnowCoroutine == null && snowManager.currentNumberOfSnow < snowManager.maxNumberOfSnow)
                         {
                             progres.StartToTakeSnow();
                             StartToDestroySnow(snow);
@@ -67,9 +72,12 @@ public class TakeSnow : MonoBehaviour
     {
         if (context.performed)
         {
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Debug.Log("Mouse screen position: " + mousePos);
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             worldPos.z = 0f;
             clickPos = worldPos;
+            Debug.Log(clickPos.ToString());
         }
     }
     public void StartToDestroySnow(Snow snow)
@@ -82,10 +90,12 @@ public class TakeSnow : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         snow.DestroySnow();
         isTakingSnow = false;
+        timeToDestroySnowCoroutine = null;
     }
     public void CancelTakingSnow()
     {
         StopCoroutine(timeToDestroySnowCoroutine);
         isTakingSnow = false;
+        timeToDestroySnowCoroutine = null;
     }
 }

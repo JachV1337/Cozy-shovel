@@ -4,7 +4,7 @@ using UnityEngine;
 public class SnowManager : MonoBehaviour
 {
     public int currentNumberOfSnow;
-    private int maxNumberOfSnow = 5;
+    public int maxNumberOfSnow { get; private set; } = 5;
     [SerializeField] TextMeshProUGUI numberOfSnowText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
