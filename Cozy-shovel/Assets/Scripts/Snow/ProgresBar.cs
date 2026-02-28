@@ -9,32 +9,31 @@ public class ProgresBar : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] Slider progresSlider;
 
-    private float maxValue = 250f;
-    private float regenAmount = 10f;   // ile dodaje
-    private float regenDelay = 0.1f;    // co ile sekund
+    //private float maxValue = 250f;
+    private float regenAmount = 5f;   // ile dodaje
+    private float regenDelay = 0.05f;    // co ile sekund
 
     private TakeSnow takeSnow;
-    private Coroutine regen;
+    private Coroutine progresBar;
 
     void Start()
     {
         takeSnow = GameObject.FindWithTag("Player").GetComponent<TakeSnow>();
         progresSlider.minValue = 0;
-        progresSlider.maxValue = maxValue;
-
-        
     }
-    public void StartToTakeSnow()
+    public void StartToTakeSnow(float maxValueTimer)
     {
+        maxValueTimer *= 100;
+        progresSlider.maxValue = maxValueTimer;
         canvas.SetActive(true);
-        regen = StartCoroutine(Regenerate());
+        progresBar = StartCoroutine(ProgresBarTimer(maxValueTimer));
     }
     private void CancelTakingSnow()
     {
         canvas.SetActive(false);
-        if (regen != null)
+        if (progresBar != null)
         {
-            StopCoroutine(regen);
+            StopCoroutine(progresBar);
         }
         progresSlider.value = 0;
     }
@@ -50,7 +49,7 @@ public class ProgresBar : MonoBehaviour
         
     }
 
-    IEnumerator Regenerate()
+    IEnumerator ProgresBarTimer(float maxValue)
     {
         while (progresSlider.value < maxValue)
         {
