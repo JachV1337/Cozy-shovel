@@ -96,8 +96,11 @@ public class TakeSnow : MonoBehaviour
     }
     public void CancelTakingSnow()
     {
-        StopCoroutine(timeToDestroySnowCoroutine);
+        if (timeToDestroySnowCoroutine != null)
+        {
+            StopCoroutine(timeToDestroySnowCoroutine);
+            timeToDestroySnowCoroutine = null;
+        }
         isTakingSnow = false;
-        timeToDestroySnowCoroutine = null;
     }
 }
