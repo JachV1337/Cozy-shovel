@@ -472,6 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Snow
   snowManager: {fileID: 0}
   breakSnowClip: {fileID: 8300000, guid: 647cf87db075e1e40bf2a4c606e4eca5, type: 3}
+  breakSnowParticle: {fileID: 2814634709225531682, guid: 5c0dda3ee71c27243a0b8f57f2e403b6, type: 3}
   snowToGive: 1
 --- !u!50 &295215579690863960
 Rigidbody2D:

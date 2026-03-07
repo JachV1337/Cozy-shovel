@@ -5,6 +5,7 @@ public class Snow : MonoBehaviour
 {
     [SerializeField] SnowManager snowManager;
     [SerializeField] AudioClip breakSnowClip;
+    [SerializeField] GameObject breakSnowParticle;
     public int snowToGive = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +24,7 @@ public class Snow : MonoBehaviour
     {
         snowManager.UpdateNumberOfSnow(snowToGive);
         AudioSource.PlayClipAtPoint(breakSnowClip, transform.position);
+        Instantiate(breakSnowParticle,transform.position, Quaternion.identity);
         if (gameObject != null)
         {
             Destroy(gameObject);
