@@ -20687,8 +20687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemUI
   icon: {fileID: 1364233344}
-  destroyTimeText: {fileID: 0}
-  moneyMultiplierText: {fileID: 0}
+  destroyTimeText: {fileID: 400694257}
+  moneyMultiplierText: {fileID: 459822168}
   priceText: {fileID: 945016651}
 --- !u!1 &2003773193
 GameObject:
