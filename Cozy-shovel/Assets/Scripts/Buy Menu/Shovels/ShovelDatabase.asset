@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f37ce2876f9711c46985ef79e314e695, type: 3}
+  m_Name: ShovelDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::DataBaseShovelsItems
+  shovelsItems:
+  - {fileID: 11400000, guid: 11bc50c1b0339e14897a439806e65f89, type: 2}
+  - {fileID: 11400000, guid: b2f2fa208f288114b830b961063a30a4, type: 2}
+  - {fileID: 11400000, guid: a1beaf2b0f1798e47bc12bedab61c1e6, type: 2}
