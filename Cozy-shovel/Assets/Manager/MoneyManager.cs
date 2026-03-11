@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
-    private float currentMoney = 0;
+    public float currentMoney { get; private set; } = 0;
     private float multiplier = 1.5f;
     private SnowManager snowManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,13 +21,18 @@ public class MoneyManager : MonoBehaviour
     {
 
     }
-    public void ChangeMoney()
+    public void ChangeMoneyFromSnow()
     {
         float amount = snowManager.currentNumberOfSnow;
         amount *= multiplier;
         amount = (float)Math.Round(amount,2);
         currentMoney += amount;
         snowManager.UpdateNumberOfSnow(-snowManager.currentNumberOfSnow);
+        UpdateText();
+    }
+    public void ChangeMoney(float amount)
+    {
+        currentMoney += amount;
         UpdateText();
     }
     void UpdateText()

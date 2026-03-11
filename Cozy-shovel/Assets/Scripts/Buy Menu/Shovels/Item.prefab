@@ -663,3 +663,4 @@ MonoBehaviour:
   destroyTimeText: {fileID: 6631448620655546394}
   moneyMultiplierText: {fileID: 108214784831650356}
   priceText: {fileID: 4430342861538360059}
+  button: {fileID: 86433412966476570}
