@@ -5,7 +5,7 @@ public class ShovelsItems : ScriptableObject
 {
     public int ID;
     public float price;
-    public Image image;
+    public Sprite image;
     public float timeToDestroy;
     public float moneyMultiplier;
 }
