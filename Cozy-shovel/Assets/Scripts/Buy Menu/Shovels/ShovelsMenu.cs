@@ -7,10 +7,25 @@ public class ShovelsMenu : MonoBehaviour
     [SerializeField] GameObject shovelItemPrefab;
     [SerializeField] Transform content;
     private HashSet<int> idsShovel = new HashSet<int>();
+    private int equipedShovel = -1;
+    private bool firstSpawn = true;
+    private List<ShopItemUI> shopItemUIs = new List<ShopItemUI>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        FillMenuWithShovels();
+        if (firstSpawn)
+        {
+            FillMenuWithShovels();
+            firstSpawn = false;
+        }
+
+    }
+    private void OnEnable()
+    {
+        if (!firstSpawn)
+        {
+            RefreshShovelsPage();
+        }
     }
     private void FillMenuWithShovels()
     {
@@ -18,13 +33,21 @@ public class ShovelsMenu : MonoBehaviour
         {
             GameObject obj = Instantiate(shovelItemPrefab, content);
             ShopItemUI shop = obj.GetComponent<ShopItemUI>();
-            if (idsShovel.Contains(shovel.ID))
+            shop.SetDataToBuy(shovel.ID, shovel.timeToDestroy, shovel.moneyMultiplier, shovel.image, shovel.price);
+            shopItemUIs.Add(shop);
+        }
+    }
+    public void RefreshShovelsPage()
+    {
+        for (int i = 0; i < shopItemUIs.Count; i++)
+        {
+            if (idsShovel.Contains(equipedShovel))
             {
-                shop.SetDataBought(shovel.timeToDestroy, shovel.moneyMultiplier, shovel.image);
+                shopItemUIs[equipedShovel].SetDataEquiped();
             }
-            else
+            else if (idsShovel.Contains(i))
             {
-                shop.SetDataToBuy(shovel.ID, shovel.timeToDestroy, shovel.moneyMultiplier, shovel.image, shovel.price);
+                shopItemUIs[i].SetDataEquip();
             }
         }
     }

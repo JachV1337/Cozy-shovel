@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32df901667a20f24ca8b0c1a5358a3ce, type: 3}
   m_Name: Shovel3
   m_EditorClassIdentifier: Assembly-CSharp::ShovelsItems
-  ID: 3
+  ID: 2
   price: 10
   image: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   timeToDestroy: 2.8

@@ -22,14 +22,15 @@ public class ShopItemUI : MonoBehaviour
         {
             return;
         }
-        button.onClick.AddListener(() => buyGear.BuyShovel(id,price));
+        button.onClick.AddListener(() => buyGear.BuyShovel(id,price,button));
     }
-    public void SetDataBought(float destroyTime, float moneyMultiplier, Sprite img)
+    public void SetDataEquip()
     {
-        icon.sprite = img;
-        destroyTimeText.text = "Take snow: " + destroyTime.ToString();
-        moneyMultiplierText.text = "Money multiplier: " + moneyMultiplier.ToString();
-        priceText.text = "Bought";
+        priceText.text = "Equip";
+    }
+    public void SetDataEquiped()
+    {
+        priceText.text = "Equiped";
     }
 }
 
