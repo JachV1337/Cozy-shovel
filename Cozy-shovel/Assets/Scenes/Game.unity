@@ -1402,6 +1402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TakeSnow
   checkRadius: 1.5
+  timeToDestroySnow: 3.5
   isTakingSnow: 0
 --- !u!61 &422432734
 BoxCollider2D:
@@ -18070,6 +18071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoneyManager
   moneyText: {fileID: 1702277838}
+  shovelMultiplier: 100
 --- !u!4 &2064178989
 Transform:
   m_ObjectHideFlags: 0

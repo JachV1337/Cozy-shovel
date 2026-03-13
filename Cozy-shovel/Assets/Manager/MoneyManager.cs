@@ -7,7 +7,8 @@ public class MoneyManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
     public float currentMoney { get; private set; } = 0;
-    private float multiplier = 1.5f;
+    private float multiplier = 1f;
+    public float shovelMultiplier = 1f;
     private SnowManager snowManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,7 @@ public class MoneyManager : MonoBehaviour
     public void ChangeMoneyFromSnow()
     {
         float amount = snowManager.currentNumberOfSnow;
+        amount *= shovelMultiplier;
         amount *= multiplier;
         amount = (float)Math.Round(amount,2);
         currentMoney += amount;

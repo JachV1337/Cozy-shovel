@@ -35,7 +35,10 @@ public class NPCSellGear : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         GearSellMenuButton.SetActive(false);
-        GearSellMenu.SetActive(false);
+        if (GearSellMenu != null)
+        {
+            GearSellMenu.SetActive(false);
+        }
         playerOn = false;
     }
     public void ShowBuyMenu()

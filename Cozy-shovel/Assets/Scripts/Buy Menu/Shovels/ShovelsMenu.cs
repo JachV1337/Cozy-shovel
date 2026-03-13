@@ -41,13 +41,14 @@ public class ShovelsMenu : MonoBehaviour
     {
         for (int i = 0; i < shopItemUIs.Count; i++)
         {
-            if (idsShovel.Contains(equipedShovel))
+            if (i == equipedShovel)
             {
-                shopItemUIs[equipedShovel].SetDataEquiped();
+                shopItemUIs[i].SetDataEquiped();
             }
             else if (idsShovel.Contains(i))
             {
                 shopItemUIs[i].SetDataEquip();
+                shopItemUIs[i].SetListenerToEquip(i,this);
             }
         }
     }
@@ -55,5 +56,18 @@ public class ShovelsMenu : MonoBehaviour
     {
         idsShovel.Add(id);
     }
-  
+    public void ChangeShovelIDEquiped(int id)
+    {
+        equipedShovel = id;
+        TakeSnow takeSnow = GameObject.FindWithTag("Player").GetComponent<TakeSnow>();
+        MoneyManager moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+        if (takeSnow != null && moneyManager != null)
+        {
+            moneyManager.shovelMultiplier = dataBaseShovelsItems.shovelsItems[id].moneyMultiplier;
+            takeSnow.timeToDestroySnow = dataBaseShovelsItems.shovelsItems[id].timeToDestroy;
+        }
+        shopItemUIs[id].SetDataEquiped();
+        RefreshShovelsPage();
+    }
+
 }

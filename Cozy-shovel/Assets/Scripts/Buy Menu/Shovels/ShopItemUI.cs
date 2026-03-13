@@ -10,7 +10,6 @@ public class ShopItemUI : MonoBehaviour
     public TextMeshProUGUI moneyMultiplierText;
     public TMP_Text priceText;
     public Button button;
-
     public void SetDataToBuy(int id, float destroyTime, float moneyMultiplier, Sprite img, float price)
     {
         icon.sprite = img;
@@ -22,7 +21,7 @@ public class ShopItemUI : MonoBehaviour
         {
             return;
         }
-        button.onClick.AddListener(() => buyGear.BuyShovel(id,price,button));
+        button.onClick.AddListener(() => buyGear.BuyShovel(id,price,button, this));
     }
     public void SetDataEquip()
     {
@@ -31,6 +30,10 @@ public class ShopItemUI : MonoBehaviour
     public void SetDataEquiped()
     {
         priceText.text = "Equiped";
+    }
+    public void SetListenerToEquip(int id, ShovelsMenu shovelsMenu)
+    {
+        button.onClick.AddListener(() => shovelsMenu.ChangeShovelIDEquiped(id));
     }
 }
 

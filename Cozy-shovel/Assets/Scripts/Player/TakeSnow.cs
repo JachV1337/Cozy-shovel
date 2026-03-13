@@ -7,7 +7,7 @@ public class TakeSnow : MonoBehaviour
     [SerializeField] private float checkRadius = 1.5f; // maksymalny zasięg od gracza
     private Vector2? clickPos; // przechowuje pozycję kliknięcia
     private SnowManager snowManager;
-    private float timeToDestroySnow = 3f;
+    public float timeToDestroySnow = 3.5f;
     public Coroutine timeToDestroySnowCoroutine;
     public bool isTakingSnow;
     private void Start()
