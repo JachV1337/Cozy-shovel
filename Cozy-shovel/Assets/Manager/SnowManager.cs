@@ -29,4 +29,9 @@ public class SnowManager : MonoBehaviour
     {
         numberOfSnowText.text = currentNumberOfSnow + " / " + maxNumberOfSnow;
     }
+    public void ChaneMaxNumberOfSnow(int capacity)
+    {
+        maxNumberOfSnow = capacity;
+        UpdateNumberText();
+    }
 }

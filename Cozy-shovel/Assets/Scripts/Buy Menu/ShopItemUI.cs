@@ -31,9 +31,12 @@ public class ShopItemUI : MonoBehaviour
     {
         priceText.text = "Equiped";
     }
-    public void SetListenerToEquip(int id, ShovelsMenu shovelsMenu)
+    public void SetListenerToEquip<T>(int id, T menu)
     {
-        button.onClick.AddListener(() => shovelsMenu.ChangeShovelIDEquiped(id));
+        if (menu is ShovelsMenu shovelMenu)
+        {
+            button.onClick.AddListener(() => shovelMenu.ChangeShovelIDEquiped(id));
+        }
     }
 }
 
